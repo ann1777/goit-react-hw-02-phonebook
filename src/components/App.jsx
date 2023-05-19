@@ -5,32 +5,44 @@ import { ContactsForm } from './ContactsForm/ContactsForm';
 import { ContactList } from './ContactList/ContactList';
 import { GlobalStyle } from './GlobalStyle';
 import { nanoid } from 'nanoid';
+import data from './contacts.json';
+import { ThemeProvider } from 'styled-components';
+import { theme } from './theme';
 
 export default class App extends Component {
   state = {
-    contacts: [],
+    contacts: data,
     name: '',
   };
 
-  addUser = userdata => {
-    const newUser = {
+  addContact = contactsData => {
+    const newContact = {
       id: nanoid(),
-      ...userdata,
+      ...contactsData,
     };
     this.setState(prevState => {
-      return { users: [...prevState.users, newUser] };
+      return { contacts: [...prevState.contacts, newContact] };
+    });
+  };
+
+  onDeleteContact = id => {
+    this.setState(prevState => {
+      return { contacts: prevState.contacts.filter(contact => contact.id !== id) };
     });
   };
 
   render () {
+    const { contacts } = this.state;
     return (
       <>
-        <Section title='Phonebook'>
-          <ContactsForm />
-          <Header title='Contacts' />
-          <ContactList />
-        </Section>
-        <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Section title="Phonebook">
+            <Header title="Contacts" />
+            <ContactsForm addContact={this.addContact} />
+          </Section>
+          <ContactList contacts={contacts} onDeleteContact={this.onDeleteContact} />
+          <GlobalStyle />
+      </ThemeProvider> 
       </>
     );
   }

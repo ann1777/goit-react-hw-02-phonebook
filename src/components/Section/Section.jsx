@@ -1,1 +1,7 @@
-export const Section = {};
+export const Section = () => {
+    return (
+        <div>
+            "Section"
+        </div>
+    )
+};
