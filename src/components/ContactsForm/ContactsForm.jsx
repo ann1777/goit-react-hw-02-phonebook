@@ -39,6 +39,8 @@ class ContactsForm extends Component {
 
    onInputChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
+    console.log(name);
+    console.log(value);
   };
 
   render () {
@@ -68,8 +70,8 @@ class ContactsForm extends Component {
               Number:
             </LabelWrapper>
             <FieldFormik
-              type="tel"
-              name="number"
+              type='text'
+              name='number'
               placeholder='tel number'
               onInputChange={this.onInputChange}
               value={number}
