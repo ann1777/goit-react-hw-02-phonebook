@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
 export const Input = styled.input`
-  padding-top: ${p => p.theme.space[3]}px;
-  padding-bottom: ${p => p.theme.space[3]}px;
-  padding-left: ${p => p.theme.space[4]}px;
-  padding-right: ${p => p.theme.space[4]}px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
 
   border: 0;
   outline: 0;
   border-radius: 8px;
-  color: ${props => props.theme.colors.text};
+  color: #2a2a2a;
   text-shadow: 0 0.5px 0.5px 0.5px #fff;
 
-  background-color: transparent;
+  background-color: #fff;
   box-shadow: inset 1px 1px 3px #b0706f, inset -1px -1px 5px #fff;
 
-  font-size: ${props => props.theme.fontSizes.s};
+  font-size: 14px;
 `;
 
 export const FilterWrapper = styled.label`
@@ -26,8 +26,8 @@ export const FilterWrapper = styled.label`
   max-width: 100%;
   width: 300px;
 
-  color: ${props => props.theme.colors.white};
-  text-shadow: ${props => props.theme.shadows.textShadow};
+  color: '#fff';
+  text-shadow: 0.0313rem 0.0313rem 0rem #baa2c5, -0.0313rem -0.0313rem 0rem #ffffff;
 `;
 
 export const LabelWrapper = styled.div`

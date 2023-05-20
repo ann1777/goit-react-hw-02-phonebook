@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Section } from './Section/Section';
-import { Header } from './Header/Header';
+import { Title } from './Title/Title';
 import { ContactsForm } from './ContactsForm/ContactsForm';
 import { ContactsFilter } from './ContactsFilter/ContactsFilter';
 import { ContactList } from './ContactList/ContactList';
@@ -13,7 +13,7 @@ import { theme } from './theme';
 export default class App extends Component {
   state = {
     contacts: data,
-    name: '',
+    filter: '',
   };
 
   onAddContact = contactsData => {
@@ -38,17 +38,28 @@ export default class App extends Component {
     this.setState({ filter: e.target.value.toLowerCase().trim() });
   };
 
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().trim().includes(normalizedFilter)
+    );
+  };
+
   render () {
-    const { contacts } = this.state;
+    const { filter } = this.state;
+    const visibleContacts = this.getVisibleContacts();
     return (
       <>
         <ThemeProvider theme={theme}>
-          <Section title='Phonebook'>
+          <Section>
+          <Title title='Phonebook' />
             <ContactsForm onAddContact={this.onAddContact} />
-            <Header title='Contacts' />
-            <ContactsFilter name={this.name} onInputChange={this.onInputChange} />
+            <Title title='Contacts' />
+            <ContactsFilter value={filter} onInputChange={this.onInputChange} />
           <ContactList
-            contacts={contacts}
+            contacts={visibleContacts}
             onDeleteContact={this.onDeleteContact}
           />
           </Section>

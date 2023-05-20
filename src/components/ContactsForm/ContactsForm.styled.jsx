@@ -6,8 +6,8 @@ export const Form = styled(FormikForm)`
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  margin-bottom: ${props => props.theme.space[4]}px;
-  padding: ${props => props.theme.space[3]}px;
+  margin-bottom: 16px;
+  padding: 8px;
 
   max-width: 100%;
   width: 500px;
@@ -21,8 +21,8 @@ export const FormField = styled.label`
   max-width: 100%;
   width: 500px;
 
-  color: ${props => props.theme.colors.accent};
-  text-shadow: ${props => props.theme.shadows.textShadow};
+  color: #312eec;
+  text-shadow: 0.0313rem 0.0313rem 0rem #baa2c5, -0.0313rem -0.0313rem 0rem #ffffff;
 `;
 
 export const LabelWrapper = styled.div`
@@ -32,31 +32,31 @@ export const LabelWrapper = styled.div`
 `;
 
 export const FieldFormik = styled(Field)`
-  padding-top: ${p => p.theme.space[3]}px;
-  padding-bottom: ${p => p.theme.space[3]}px;
-  padding-left: ${p => p.theme.space[4]}px;
-  padding-right: ${p => p.theme.space[4]}px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
 
   max-width: 100%;
 
   border: 0;
   outline: 0;
   border-radius: 8px;
-  color: ${props => props.theme.colors.accent};
-  background-color: ${props => props.theme.colors.primary};
+  color: #312eec;
+  background-color: #f7eff4;
   box-shadow: inset 1px 1px 3px #8ba793, inset -1px -1px 5px #fff;
 
   font-style: italic;
 
-  text-shadow: ${props => props.theme.shadows.textShadow};
-  font-size: ${props => props.theme.fontSizes.s};
-  color: ${props => props.theme.colors.primary};
+  text-shadow: 0.0313rem 0.0313rem 0rem #baa2c5, -0.0313rem -0.0313rem 0rem #ffffff;
+  font-size: 14px;
+  color: #f7eff4;
   box-shadow: inset 1px 1px 3px #8ba793, inset -1px -1px 5px #fff;
 `;
 
 export const ErrorMessage = styled(FormikError)`
   max-width: 500px;
-  color: #9e0202;
+  color: #312eec;
   text-shadow: 0 0.5px 0.5px #fff;
 `;
 
@@ -64,41 +64,41 @@ export const StyledButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: ${p => p.theme.space[2]}px;
+  gap: 4px;
 
-  padding-top: ${p => p.theme.space[3]}px;
-  padding-bottom: ${p => p.theme.space[3]}px;
-  padding-left: ${p => p.theme.space[4]}px;
-  padding-right: ${p => p.theme.space[4]}px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
 
   max-width: 100%;
 
-  border: ${p => p.theme.borders.none};
+  border: none;
   outline: none;
   border-radius: 8px;
 
-  box-shadow: ${p => p.theme.shadows.boxShadow};
+  box-shadow: 0.3125rem -0.3125rem 1.25rem #fff, 0.3125rem 0.3125rem 1.25rem #babecc;
   transition: all 0.2s ease-in-out;
 
-  background-color: ${p => p.theme.colors.muted};
-  color: ${p => p.theme.colors.white};
+  background-color: #97f1ff;
+  color: #8ba793;
   cursor: pointer;
 
   :hover,
   :focus {
-    background-color: ${p => p.theme.colors.secondary};
-    color: ${p => p.theme.colors.accent};
+    background-color: #97f1ff;
+    color: #312eec;
     box-shadow: -2px -2px 5px #fff, 2px 2px 5px #8ba793;
     svg {
-      fill: ${p => p.theme.colors.accent};
-      stroke: ${p => p.theme.colors.accent};
+      fill: #312eec;
+      stroke: #312eec;
     }
     :active {
-      color: ${p => p.theme.colors.accent};
+      color: #312eec;
       box-shadow: inset 1px 1px 2px #8ba793, inset -1px -1px 2px #fff;
       svg {
-        fill: ${p => p.theme.colors.accent};
-        stroke: ${p => p.theme.colors.accent};
+        fill: #312eec;
+        stroke: #312eec;
       }
     }
   }
