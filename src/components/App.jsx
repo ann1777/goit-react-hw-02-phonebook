@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Section } from './Section/Section';
 import { Title } from './Title/Title';
-import { ContactsForm } from './ContactsForm/ContactsForm';
+import ContactsForm from './ContactsForm/ContactsForm';
 import { ContactsFilter } from './ContactsFilter/ContactsFilter';
 import { ContactList } from './ContactList/ContactList';
 import { GlobalStyle } from './GlobalStyle';
@@ -19,7 +19,8 @@ export default class App extends Component {
   onAddContact = contactsData => {
     const newContact = {
       id: nanoid(),
-      ...contactsData,
+      name: contactsData.name,
+      number: contactsData.number,
     };
     this.setState(prevState => {
       return { contacts: [...prevState.contacts, newContact] };
@@ -35,7 +36,7 @@ export default class App extends Component {
   };
 
   onInputChange = e => {
-    this.setState({ filter: e.target.value.toLowerCase().trim() });
+    this.setState({ filter: e.target.value });
   };
 
   getVisibleContacts = () => {
@@ -48,19 +49,19 @@ export default class App extends Component {
   };
 
   render () {
-    const { filter } = this.state;
+    const { contacts, filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     return (
       <>
         <ThemeProvider theme={theme}>
           <Section>
           <Title title='Phonebook' />
-            <ContactsForm onAddContact={this.onAddContact} />
+            <ContactsForm addContact={this.onAddContact} contacts={contacts} />
             <Title title='Contacts' />
-            <ContactsFilter value={filter} onInputChange={this.onInputChange} />
+            <ContactsFilter value={filter} onChange={this.onInputChange} />
           <ContactList
             contacts={visibleContacts}
-            onDeleteContact={this.onDeleteContact}
+            onDelete={this.onDeleteContact}
           />
           </Section>
           <GlobalStyle />
