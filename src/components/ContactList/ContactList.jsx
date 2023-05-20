@@ -1,31 +1,24 @@
-
-import { UserItem, UserName, UserNumber, DeleteButton } from './ContactList.styled'
+import React from 'react';
 import PropTypes from 'prop-types';
+import { List, ContactItem, DeleteButton } from './ContactList.styled';
 
-export const ContactList = ({contacts, onDelete}) => {
-  const handleDelete = id => {
-    onDelete(id);
-  };
+export const ContactList = ({ contacts, onDelete }) => {
 
-    return(
-        <>
-        {contacts.map(({contact}) => {
-              <UserItem
-              key={contact.id}
-              contact={contact}
-              onDelete={handleDelete}
-              display="flex"
-              justifyContent="space-around"
-              textAlign="left"
-              as="li"
-              >
-                <UserName>Name: {contact.name}</UserName>
-                <UserNumber>Number: {contact.number}</UserNumber>
-                <DeleteButton onClick={() => handleDelete(contact.id)}>Delete</DeleteButton>
-              </UserItem>
-          })}
-        </>
-    )
+  return (
+    <List>
+      {contacts.map(({ name, number, id }) => {
+        return (
+          <ContactItem key={id}>
+          <span>{name}:</span>
+          <span>{number}</span>
+          <DeleteButton type='button' onClick={() => onDelete(id)}>
+            Remove
+          </DeleteButton>
+        </ContactItem>
+        );
+      })}
+    </List>
+  );
 };
 
 ContactList.propTypes = {
@@ -34,7 +27,7 @@ ContactList.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
-    })
-  ).isRequired, 
+    }).isRequired
+  ),
   onDelete: PropTypes.func.isRequired,
 };

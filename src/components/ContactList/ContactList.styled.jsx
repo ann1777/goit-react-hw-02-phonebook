@@ -1,10 +1,23 @@
 import styled from 'styled-components';
 
-export const UserName = styled.p`
+export const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  max-width: 100%;
+  width: 300px;
+`;
+
+export const ContactName = styled.p`
    font-size: 15px; 
 ` 
 
-export const UserNumber = styled.p`
+export const ContactNumber = styled.p`
     font-size: 15px;
 `
 
@@ -51,7 +64,7 @@ export const DeleteButton = styled.button`
   }
 `;
 
-export const UserItem = styled.li`
+export const ContactItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { nanoid } from 'nanoid';
-import { BsFillTelephoneFill, BsPersonFill } from 'react-icons/bs';
 
 import {
   Form,
@@ -50,7 +49,7 @@ class ContactsForm extends Component {
         <Form htmlFor='name' onSubmit={this.onFormSubmit}>
           <FormField htmlFor='name'>
             <LabelWrapper>
-              <BsPersonFill /> Name:
+              Name:
             </LabelWrapper>
             <FieldFormik
               type='text'
@@ -65,7 +64,7 @@ class ContactsForm extends Component {
           </FormField>
           <FormField htmlFor='number'>
             <LabelWrapper>
-              <BsFillTelephoneFill /> Number:
+              Number:
             </LabelWrapper>
             <FieldFormik
               type='tel'

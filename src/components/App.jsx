@@ -6,6 +6,7 @@ import { ContactsFilter } from './ContactsFilter/ContactsFilter';
 import { ContactList } from './ContactList/ContactList';
 import { GlobalStyle } from './GlobalStyle';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 import data from './contacts.json';
 import { ThemeProvider } from './ThemeProvider/ThemeProvider';
 import { theme } from './theme';
@@ -16,7 +17,21 @@ export default class App extends Component {
     filter: '',
   };
 
-  onAddContact = contactsData => {
+  static PropTypesypes = {
+    addNewContact: PropTypes.func.isRequired,
+  };
+
+  onSubmitForm = e => {
+    e.preventDefault();
+    this.props.addNewContact(this.state);
+    this.resetForm();
+  };
+
+  resetForm = () => {
+    this.setState({ name: '', number: '' });
+  };
+
+  /* onAddContact = contactsData => {
     const newContact = {
       id: nanoid(),
       name: contactsData.name,
@@ -26,7 +41,7 @@ export default class App extends Component {
       return { contacts: [...prevState.contacts, newContact] };
     });
   };
-
+ */
   onDeleteContact = id => {
     this.setState(prevState => {
       return {
