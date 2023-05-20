@@ -16,6 +16,7 @@ const INITIAL_STATE = {
   contacts: [],
   name: '',
   number: '',
+  type: '',
 };
 
 class ContactsForm extends Component {
@@ -43,10 +44,10 @@ class ContactsForm extends Component {
     console.log(value);
   };
 
-   formatNumber = ({ target: { name, value } }) => {
+   formatNumber = ({ target: { name, value, type } }) => {
     this.setState({ [name]: value });
     const formattedValue = value.replace(/(\d{3})(\d{2})(\d{2})/, '$1-$2-$3');
-    this.setState({ [name]: formattedValue });
+    this.setState({ [name]: formattedValue, [type]: 'phone' });
     return formattedValue;
   }; 
 
