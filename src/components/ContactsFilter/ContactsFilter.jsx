@@ -4,14 +4,11 @@ import PropTypes from 'prop-types';
 
 export const ContactsFilter = ({ value, onChange }) => (
   <FilterWrapper>
-    <LabelWrapper>
-      Find contacts by name
-    </LabelWrapper>
     <Input
       type='text'
       value={value}
       onChange={onChange}
-      placeholder='Contacts search'
+      placeholder='Find contacts by name'
     />
   </FilterWrapper>
 );

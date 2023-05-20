@@ -37,7 +37,7 @@ class ContactsForm extends Component {
     this.setState(INITIAL_STATE);
   };
 
-  onInputChange = ({ target: { name, value } }) => {
+   onInputChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
 
@@ -54,6 +54,7 @@ class ContactsForm extends Component {
             <FieldFormik
               type='text'
               name='name'
+              placeholder='name'
               onChange={this.onInputChange}
               value={name}
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -67,8 +68,9 @@ class ContactsForm extends Component {
               Number:
             </LabelWrapper>
             <FieldFormik
-              type='tel'
-              name='number'
+              type="tel"
+              name="number"
+              placeholder='tel number'
               onInputChange={this.onInputChange}
               value={number}
               pattern='\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}'

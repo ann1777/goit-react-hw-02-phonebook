@@ -50,7 +50,7 @@ export const FieldFormik = styled(Field)`
 
   text-shadow: 0.0313rem 0.0313rem 0rem #baa2c5, -0.0313rem -0.0313rem 0rem #ffffff;
   font-size: 14px;
-  color: #f7eff4;
+  color: #706e6f;
   box-shadow: inset 1px 1px 3px #8ba793, inset -1px -1px 5px #fff;
 `;
 
