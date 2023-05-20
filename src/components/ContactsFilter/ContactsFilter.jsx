@@ -16,5 +16,5 @@ export const ContactsFilter = ({ name, onInputChange }) => (
 
 ContactsFilter.propTypes = {
     onInputChange: PropTypes.func.isRequired,
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
 }

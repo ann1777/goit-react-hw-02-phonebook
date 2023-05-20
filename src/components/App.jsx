@@ -7,7 +7,7 @@ import { ContactList } from './ContactList/ContactList';
 import { GlobalStyle } from './GlobalStyle';
 import { nanoid } from 'nanoid';
 import data from './contacts.json';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from './ThemeProvider/ThemeProvider';
 import { theme } from './theme';
 
 export default class App extends Component {
