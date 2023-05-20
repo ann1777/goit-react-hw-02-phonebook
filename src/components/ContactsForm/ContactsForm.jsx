@@ -13,6 +13,7 @@ import {
 } from './ContactsForm.styled';
 
 const INITIAL_STATE = {
+  contacts: [],
   name: '',
   number: '',
 };
@@ -32,16 +33,22 @@ class ContactsForm extends Component {
     if (existingContact) {
       return alert(`${name} has already in contacts.`);
     }
-    this.props.handleForm(this.state);
     this.props.addContact({ id: nanoid(), name: name, number: number });
     this.setState(INITIAL_STATE);
   };
 
-   onInputChange = ({ target: { name, value } }) => {
+  onInputChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
     console.log(name);
     console.log(value);
   };
+
+   formatNumber = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+    const formattedValue = value.replace(/(\d{3})(\d{2})(\d{2})/, '$1-$2-$3');
+    this.setState({ [name]: formattedValue });
+    return formattedValue;
+  }; 
 
   render () {
     const { name, number } = this.state;
@@ -50,9 +57,7 @@ class ContactsForm extends Component {
       <Formik>
         <Form htmlFor='name' onSubmit={this.onFormSubmit}>
           <FormField htmlFor='name'>
-            <LabelWrapper>
-              Name:
-            </LabelWrapper>
+            <LabelWrapper>Name:</LabelWrapper>
             <FieldFormik
               type='text'
               name='name'
@@ -66,16 +71,14 @@ class ContactsForm extends Component {
             <ErrorMessage name='name' component='span' />
           </FormField>
           <FormField htmlFor='number'>
-            <LabelWrapper>
-              Number:
-            </LabelWrapper>
+            <LabelWrapper>Number:</LabelWrapper>
             <FieldFormik
-              type='text'
+              type='tel'
               name='number'
               placeholder='tel number'
-              onInputChange={this.onInputChange}
+              onChange={this.formatNumber}
               value={number}
-              pattern='\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}'
+              pattern='\+?\d{1,4}[-.\s]?\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}'
               title='Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
               required
             />

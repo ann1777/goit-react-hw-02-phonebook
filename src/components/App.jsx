@@ -10,6 +10,17 @@ import data from './contacts.json';
 import { ThemeProvider } from './ThemeProvider/ThemeProvider';
 import { theme } from './theme';
 
+const notifyOptions = {
+  position: 'bottom-left',
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: 'colored',
+};
+
 export default class App extends Component {
   state = {
     contacts: data,
@@ -30,17 +41,21 @@ export default class App extends Component {
     this.setState({ name: '', number: '' });
   };
 
-  /* onAddContact = contactsData => {
-    const newContact = {
-      id: nanoid(),
-      name: contactsData.name,
-      number: contactsData.number,
-    };
-    this.setState(prevState => {
-      return { contacts: [...prevState.contacts, newContact] };
+   onAddContact = newContact => {
+    this.state.contacts.filter(
+      contact =>
+      contact.name.toLowerCase().trim() ===
+      newContact.name.toLowerCase().trim() ||
+      contact.number.trim() === newContact.number.trim()
+    ).length
+    ? ContactList.error(`${newContact.name}: has already present in contacts`, notifyOptions)
+    : this.setState(prevState => {
+      return {
+        contacts: [newContact, ...prevState.contacts],
+      };
     });
   };
- */
+ 
   onDeleteContact = id => {
     this.setState(prevState => {
       return {

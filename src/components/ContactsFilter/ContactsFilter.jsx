@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, FilterWrapper, LabelWrapper } from './ContactsFilter.styled';
+import { Input, FilterWrapper } from './ContactsFilter.styled';
 import PropTypes from 'prop-types';
 
 export const ContactsFilter = ({ value, onChange }) => (
