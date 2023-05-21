@@ -35,8 +35,6 @@ export const FieldFormik = styled(Field)`
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
-  padding-right: 16px;
-
   max-width: 100%;
 
   border: 0;

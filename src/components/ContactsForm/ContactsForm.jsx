@@ -26,16 +26,19 @@ class ContactsForm extends Component {
     event.preventDefault();
     const { name, number } = this.state;
     const { contacts } = this.props;
-
-    const existingContact = contacts.find(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (existingContact) {
-      return alert(`${name} has already in contacts.`);
+    console.log(this.props);
+    try {
+        const existingContact = contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      );
+      if (existingContact) {
+        return alert(`${name} has already in contacts.`);
+      }
+      this.props.addContact({ id: nanoid(), name: name, number: number });
+      this.setState(INITIAL_STATE);
+    } catch (ReferenceError) {
+        console.log("An ReferenceError error occured");
     }
-    this.props.addContact({ id: nanoid(), name: name, number: number });
-    this.setState(INITIAL_STATE);
   };
 
   onInputChange = ({ target: { name, value } }) => {
