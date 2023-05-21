@@ -10,7 +10,7 @@ export const List = styled.ul`
   padding-right: 16px;
 
   max-width: 100%;
-  width: 300px;
+  width: 400px;
 `;
 
 export const ContactName = styled.p`

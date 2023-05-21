@@ -57,7 +57,7 @@ export default class App extends Component {
   };
  
   onDeleteContact = id => {
-    this.setState(prevState => {
+    this.setState(prevState => {     
       return {
         contacts: prevState.contacts.filter(contact => contact.id !== id),
       };
