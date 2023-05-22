@@ -27,7 +27,7 @@ export default class App extends Component {
     filter: '',
   };
 
-  static PropTypesypes = {
+  static propTypes = {
     addNewContact: PropTypes.func.isRequired,
   };
 
