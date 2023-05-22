@@ -41,14 +41,15 @@ export default class App extends Component {
     this.setState({ name: '', number: '' });
   };
 
-   onAddContact = newContact => {
-    this.contacts.find(
+   onAddContact = (newContact) => {
+    const { contacts } = this.state;
+    contacts.some(
       contact =>
       contact.name.toLowerCase().trim() ===
       newContact.name.toLowerCase().trim() ||
       contact.number.trim() === newContact.number.trim()
-    ).length
-    ? ContactList.error(`${newContact.name}: has already present in contacts`, notifyOptions)
+    )
+     ? ContactList.error(`${newContact.name}: has already present in contacts`, notifyOptions)
     : this.setState(prevState => {
       return {
         contacts: [newContact, ...prevState.contacts],
