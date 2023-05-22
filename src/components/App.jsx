@@ -42,7 +42,7 @@ export default class App extends Component {
   };
 
    onAddContact = newContact => {
-    this.state.contacts.filter(
+    this.state.contacts.find(
       contact =>
       contact.name.toLowerCase().trim() ===
       newContact.name.toLowerCase().trim() ||
@@ -85,7 +85,7 @@ export default class App extends Component {
         <ThemeProvider theme={theme}>
           <Section>
           <Title title='Phonebook' />
-            <ContactsForm addContact={this.onAddContact} contacts={contacts} />
+            <ContactsForm addContact={this.onAddContact} newContact={contacts} />
             <Title title='Contacts' />
             <ContactsFilter value={filter} onChange={this.onInputChange} />
           <ContactList

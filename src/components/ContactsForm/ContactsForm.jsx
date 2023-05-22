@@ -13,10 +13,8 @@ import {
 } from './ContactsForm.styled';
 
 const INITIAL_STATE = {
-  contacts: [],
   name: '',
   number: '',
-  type: '',
 };
 
 class ContactsForm extends Component {
@@ -25,15 +23,7 @@ class ContactsForm extends Component {
   onFormSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
-    const { contacts } = this.props;
-    console.log(this.props);
     try {
-        const existingContact = contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase()
-      );
-      if (existingContact) {
-        return alert(`${name} has already in contacts.`);
-      }
       this.props.addContact({ id: nanoid(), name: name, number: number });
       this.setState(INITIAL_STATE);
     } catch (ReferenceError) {
