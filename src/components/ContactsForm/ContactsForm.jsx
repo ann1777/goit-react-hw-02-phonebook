@@ -23,13 +23,6 @@ class ContactsForm extends Component {
   onFormSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
-    try {
-      this.props.addContact({ id: nanoid(), name: name, number: number });
-      this.setState(INITIAL_STATE);
-    } catch (ReferenceError) {
-        console.log("An ReferenceError error occured");
-    }
-    console.log(this.props);
     this.props.addContact({ id: nanoid(), name: name, number: number });
     this.setState(INITIAL_STATE);
   };

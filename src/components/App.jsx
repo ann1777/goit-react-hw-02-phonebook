@@ -42,7 +42,7 @@ export default class App extends Component {
   };
 
    onAddContact = newContact => {
-    this.state.contacts.find(
+    this.contacts.find(
       contact =>
       contact.name.toLowerCase().trim() ===
       newContact.name.toLowerCase().trim() ||
