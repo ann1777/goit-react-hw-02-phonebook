@@ -29,6 +29,9 @@ class ContactsForm extends Component {
     } catch (ReferenceError) {
         console.log("An ReferenceError error occured");
     }
+    console.log(this.props);
+    this.props.addContact({ id: nanoid(), name: name, number: number });
+    this.setState(INITIAL_STATE);
   };
 
   onInputChange = ({ target: { name, value } }) => {
